@@ -38,6 +38,7 @@ doc/api/
 .idea
 **/node_modules/*
 **/.firebaserc
+/android/app/google-services.json
 
 ### Firebase Patch ###
 .runtimeconfig.json
