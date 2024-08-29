@@ -1,22 +1,22 @@
-import 'package:brew_crew/models/user_entity.dart';
 import 'package:brew_crew/services/auth_services.dart';
 import 'package:flutter/material.dart';
 
-class SignIn extends StatefulWidget {
+class SignUp extends StatefulWidget {
 
   final toggleView;
 
-  const SignIn({
+  const SignUp({
     super.key,
     this.toggleView
   });
 
   @override
-  State<SignIn> createState() => _SignInState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignInState extends State<SignIn> {
+class _SignUpState extends State<SignUp> {
 
+    
   AuthServices _auth = AuthServices();
 
   String email = '';
@@ -30,7 +30,7 @@ class _SignInState extends State<SignIn> {
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
         title: const Text(
-          'Sign In to Brew Crew',
+          'Sign Up to Brew Crew',
           style: TextStyle(
             color: Colors.white
           ),
@@ -41,15 +41,15 @@ class _SignInState extends State<SignIn> {
               widget.toggleView();
             }, 
             label: const Text(
-              'Sign Up',
+              'Sign In',
               style: TextStyle(
                 color: Colors.white
               ),
-            ),
+              ),
             icon: const Icon(
               Icons.person,
               color: Colors.white,
-            ),
+              ),
           )
         ],
       ),
@@ -84,7 +84,7 @@ class _SignInState extends State<SignIn> {
                 backgroundColor: Colors.brown[400]
               ),
               child: const Text(
-                'Sign In',
+                'Sign Up',
                 style: TextStyle(
                   color: Colors.white
                 ),

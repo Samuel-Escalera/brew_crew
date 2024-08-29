@@ -24,4 +24,13 @@ class AuthServices {
       return null;
     }
   }
+
+  Future? signOut () async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
 }
