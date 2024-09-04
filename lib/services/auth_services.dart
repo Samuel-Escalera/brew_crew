@@ -8,11 +8,11 @@ class AuthServices {
     return user != null ? UserEntity(uid: user.uid) : null;
   }
 
-  // auth change user stream
   Stream<UserEntity?> get user {
     return _auth.authStateChanges()
       .map((User? user) => _userEntityFromFairebaseUser(user!));
   }
+
   Future signInAnonymous () async {
     try {
       UserCredential result = await _auth.signInAnonymously();
@@ -28,6 +28,30 @@ class AuthServices {
   Future? signOut () async {
     try {
       return await _auth.signOut();
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
+      User? user = result.user;
+
+      return _userEntityFromFairebaseUser(user!);
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  Future signInWithEmailAndPassword(String email, String password) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      User? user = result.user;
+
+      return _userEntityFromFairebaseUser(user!);
     } catch (e) {
       print("Error: $e");
       return null;
